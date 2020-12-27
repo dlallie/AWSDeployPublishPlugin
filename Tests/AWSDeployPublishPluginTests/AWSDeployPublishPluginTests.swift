@@ -1,7 +1,7 @@
 import XCTest
-@testable import S3PublishDeploy
+@testable import AWSDeployPublishPlugin
 
-final class S3PublishDeployTests: XCTestCase {
+final class AWSDeployPublishPluginTests: XCTestCase {
 //    func testExample() {
 //        // This is an example of a functional test case.
 //        // Use XCTAssert and related functions to verify your tests produce the correct

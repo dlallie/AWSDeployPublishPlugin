@@ -1,7 +1,7 @@
 import XCTest
 
-import S3PublishPluginTests
+import AWSDeployPublishPluginTests
 
 var tests = [XCTestCaseEntry]()
-tests += S3PublishDeployTests.allTests()
+tests += AWSDeployPublishPluginTests.allTests()
 XCTMain(tests)

@@ -1,6 +1,6 @@
-# S3PublishDeploy
+# AWSDeployPublishPlugin
 
-A deployment method for [Publish](https://github.com/johnsundell/publish) to upload files using to a S3.
+A deployment method for [Publish](https://github.com/johnsundell/publish) to upload static website files to S3 with optional support for a CloudFront CDN..
 
 ## Preface
 If you want to learn how to configure a S3 bucket for static site hosting, you can learn how to [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html)
@@ -12,20 +12,20 @@ Download and installation for the AWS CLI are located [here](https://aws.amazon.
 ## Installation
 
 
-Add S3PublishDeploy to your `Package.swift` file.
+Add AWSDeployPublishPlugin to your `Package.swift` file.
 
 ```swift
 let package = Package(
     ...
     dependencies: [
-        .package(url: "https://github.com/johnbehnke/s3publishdeploy", from: "0.1.0")
+        .package(url: "https://github.com/dlallie/AWSDeployPublishPlugin", from: "0.1.0")
     ],
     targets: [
         .target(
             ...
             dependencies: [
                 ...
-                "S3PPublishDeploy"
+                "AWSDeployPublishPlugin"
             ]
         )
     ]
@@ -39,11 +39,11 @@ let package = Package(
 
 You can then declare your deployment method in your pipeline:
 ```swift
-import S3PublishDeploy
+import AWSDeployPublishPlugin
 ...
 try Website().publish(using: [
     ...
-    .deploy(using: .s3(bucket: "my-test-bucket))
+    .deploy(using: .aws(s3Bucket: "<name>", cloudFrontDistributionId: "<id>"))
 ])
 ```
 By default, the package assumes you have the AWS CLI installed at `/usr/local/bin/aws`. If you want to provide a different AWS binary, you can pass the `pathToAWSBinary` and give the _full_ path to the binary. 
@@ -53,7 +53,7 @@ By defualt, the package will deploy using the `sync` argument set to `true`. Thi
 
 ## Acknowledgement
 
-Thanks to John Sundell (@johnsundell) for creating [Publish](https://github.com/johnsundell/publish)
+Thanks to John Sundell (@johnsundell) for creating [Publish](https://github.com/johnsundell/publish) and John Behnke for creating the base [S3PublishDeploy](https://github.com/JohnBehnke/S3PublishDeploy) on which this plugin is based.
 
 ## License
 MIT License
