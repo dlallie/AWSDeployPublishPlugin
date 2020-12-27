@@ -18,7 +18,7 @@ Add AWSDeployPublishPlugin to your `Package.swift` file.
 let package = Package(
     ...
     dependencies: [
-        .package(url: "https://github.com/dlallie/AWSDeployPublishPlugin", from: "0.1.0")
+        .package(url: "https://github.com/dlallie/AWSDeployPublishPlugin", from: "0.2.0")
     ],
     targets: [
         .target(
@@ -43,7 +43,10 @@ import AWSDeployPublishPlugin
 ...
 try Website().publish(using: [
     ...
-    .deploy(using: .aws(s3Bucket: "<name>", cloudFrontDistributionId: "<id>"))
+    .deploy(using: .aws(
+        bucketName: "<name>", 
+        cloudFrontDistributionId: "<id>"
+    ))
 ])
 ```
 By default, the package assumes you have the AWS CLI installed at `/usr/local/bin/aws`. If you want to provide a different AWS binary, you can pass the `pathToAWSBinary` and give the _full_ path to the binary. 
