@@ -36,8 +36,7 @@ public extension DeploymentMethod {
             )
             
             try aws.deploy()
-            try deploymentFolder.empty()
-            
+            try deploymentFolder.delete()
         }
         
     }
